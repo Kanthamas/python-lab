@@ -1,7 +1,7 @@
 import json
 
-def readJsonFile(fileName):
-    data = ""
+def readJsonFile(fileName) -> str:
+    data: str | None = ""
     try:
         with open(fileName) as json_file:
             data = json.load(json_file)

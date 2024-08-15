@@ -22,24 +22,24 @@
 
 # Exercise 3: Creating the main program
 import lab14_jsonFileHandler
-data = lab14_jsonFileHandler.readJsonFile('python-lab/files/insulin.json')
+data: str = lab14_jsonFileHandler.readJsonFile('python-lab/files/insulin.json')
 
 if data != "" :
-    bInsulin = data['molecules']['bInsulin']
-    aInsulin = data['molecules']['aInsulin']
-    insulin = bInsulin + aInsulin
-    molecularWeightInsulinActual = data['molecularWeightInsulinActual']
+    bInsulin: str = data['molecules']['bInsulin']
+    aInsulin: str = data['molecules']['aInsulin']
+    insulin: str = bInsulin + aInsulin
+    molecularWeightInsulinActual: float = data['molecularWeightInsulinActual']
     print('bInsulin: ' + bInsulin)
     print('aInsulin: ' + aInsulin)
     print('molecularWeightInsulinActual: ' + str(molecularWeightInsulinActual))
     
     # Calculating the molecular weight of insulin  
     # Getting a list of the amino acid (AA) weights  
-    aaWeights = data['weights']
+    aaWeights: float = data['weights']
     # Count the number of each amino acids  
-    aaCountInsulin = ({x: float(insulin.upper().count(x)) for x in ['A','C','D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R','S', 'T','V', 'W', 'Y']})  
+    aaCountInsulin: dict = ({x: float(insulin.upper().count(x)) for x in ['A','C','D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R','S', 'T','V', 'W', 'Y']})  
     # Multiply the count by the weights  
-    molecularWeightInsulin = sum({x: (aaCountInsulin[x]*aaWeights[x]) for x in
+    molecularWeightInsulin: float = sum({x: (aaCountInsulin[x]*aaWeights[x]) for x in
     ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R','S', 'T', 'V', 'W', 'Y']}.values())  
     print("The rough molecular weight of insulin: " +
     str(molecularWeightInsulin))
