@@ -19,7 +19,7 @@ def getMessage():
 # Get a cipher key
 def getCipherKey():
     shiftAmount = input("Please enter a key (whole number from 1-25): ")
-    return shiftAmount
+    return int(shiftAmount)
 
 # Encrypt message
 def encryptMessage(message, cipherKey, alphabet):
@@ -27,7 +27,7 @@ def encryptMessage(message, cipherKey, alphabet):
     uppercaseMessage = ""
     uppercaseMessage = message.upper()
     for currentCharacter in uppercaseMessage:
-        position = alphabet.find(currentCharacter)
+        position: int = alphabet.find(currentCharacter)
         newPosition = position + cipherKey
         if currentCharacter in alphabet:
             encryptedMessage = encryptedMessage + alphabet[newPosition]
